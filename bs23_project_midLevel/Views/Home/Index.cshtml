@@ -1,0 +1,29 @@
+﻿@model IEnumerable<bs23_project_midLevel.Models.Post>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Content</td>
+                    <td>@post.User</td>
+                    <td>@post.CreatedDateTime</td>
+                    <td>@post.TotalComments</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
