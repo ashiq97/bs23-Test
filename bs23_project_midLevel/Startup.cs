@@ -31,6 +31,10 @@ namespace bs23_project_midLevel
                    options.UseSqlServer(
                    Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDefaultIdentity<ApplicationUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+          
+
             services.AddScoped<IPost, PostRepository>();
 
             services.AddControllersWithViews();

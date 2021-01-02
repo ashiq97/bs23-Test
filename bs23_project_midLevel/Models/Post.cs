@@ -13,7 +13,7 @@ namespace bs23_project_midLevel.Models
         public string Content { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public int TotalComments { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public string PostUserName { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
 
     }

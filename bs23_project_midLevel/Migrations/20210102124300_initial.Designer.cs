@@ -10,7 +10,7 @@ using bs23_project_midLevel.Models;
 namespace bs23_project_midLevel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210102094836_initial")]
+    [Migration("20210102124300_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,10 +99,12 @@ namespace bs23_project_midLevel.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -139,10 +141,12 @@ namespace bs23_project_midLevel.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -242,14 +246,12 @@ namespace bs23_project_midLevel.Migrations
                     b.Property<int?>("PostId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -267,15 +269,13 @@ namespace bs23_project_midLevel.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("PostUserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TotalComments")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
@@ -336,17 +336,6 @@ namespace bs23_project_midLevel.Migrations
                     b.HasOne("bs23_project_midLevel.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId");
-
-                    b.HasOne("bs23_project_midLevel.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("bs23_project_midLevel.Models.Post", b =>
-                {
-                    b.HasOne("bs23_project_midLevel.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

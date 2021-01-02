@@ -12,7 +12,7 @@ namespace bs23_project_midLevel.Models
         public int Id { get; set; }
         public string Content { get; set; }
         public DateTime CreatedTime { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public string UserName { get; set; }
         public virtual Post Post { get; set; }
         public int Like { get; set; }
         public int DisLike { get; set; }

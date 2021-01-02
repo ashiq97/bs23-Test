@@ -25,15 +25,13 @@ namespace bs23_project_midLevel.Repository
         public IEnumerable<Post> GetAll()
         {
             return _context.Posts
-                           .Include(post => post.User)
-                           .Include(post => post.Comments).ThenInclude(Comment => Comment.User);
+                           .Include(post => post.Comments);
         }
 
         public Post GetById(int id)
         {
              return _context.Posts.Where(post => post.Id == id)
-                            .Include(post => post.User)
-                            .Include(post => post.Comments).ThenInclude(Comment => Comment.User)
+                            .Include(post => post.Comments)
                             .First();
         }
     }

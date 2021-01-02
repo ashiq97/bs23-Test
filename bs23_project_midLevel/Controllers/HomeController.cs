@@ -27,8 +27,10 @@ namespace bs23_project_midLevel.Controllers
 
         public IActionResult Index()
         {
-            var post = _postRepo.GetAll();
+            var post = _postRepo.GetById(1);
             return View(post);
+            //var post = _postRepo.GetAll();
+            //return View(post);
         }
 
 
